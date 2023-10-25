@@ -112,6 +112,15 @@ const NextQuestion = () => {
   }
 }
 
+const StartOver = () => {
+  if (currentQuestion.value < questions.value.length - 1) {
+    currentQuestion.value++
+  } else {
+    quizCompleted.value = true
+    let StartOver = window.location.reload();
+  }
+}
+
 </script>
 
 <template>
@@ -168,6 +177,7 @@ const NextQuestion = () => {
     <section v-else>
       <h2>Du har slutfört quizzet!</h2>
       <p>Din poäng blev {{ score }}/{{ questions.length }}</p>
+      <button class="restart" @click="StartOver">Spela igen</button>
     </section>
   </main>
 </template>
@@ -277,6 +287,11 @@ button {
 
 button:disabled {
   opacity: 0.5;
+}
+
+button.restart {
+  margin-top: 1rem;
+  margin-left: 6.5rem;
 }
 
 h2 {
